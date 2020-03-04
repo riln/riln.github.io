@@ -1,0 +1,11 @@
+---
+permalink: /contacts
+layout: default
+---
+
+<h1>Контакты</h1>
+<div id="contacts" class="d-flex flex-row flex-wrap justify-content-center">
+	{% for item in site.data.contacts %}
+		<a id="contact-{{ item[0] }}" href="{{ item[1].link }}" class="btn text-white" role="button"><i class="fa{{ item[1].icon }} fa-fw"></i>{{ item[1].title }}</a>
+	{% endfor %}
+</div>
