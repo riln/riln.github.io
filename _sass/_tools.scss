@@ -1,0 +1,22 @@
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+  }
+}
+
+@mixin browsers($browsers) {
+  $selectors: (
+      chrome: '&:not(*:root)',
+      firefox: '@-moz-document url-prefix()',
+      ie: '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)'
+  );
+
+  @each $browser in $browsers {
+    #{map-get($selectors, $browser)} {
+      @content;
+    }
+  }
+}

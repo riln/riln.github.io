@@ -1,0 +1,161 @@
+@import 'colors';
+
+$darkens: (
+    background-hover: 7.5%,
+    background-active: 10%,
+    border: 2.5%,
+    border-hover: 10%,
+    border-active: 12.5%,
+    outline: 18.5%
+);
+$button-border-width: 1px;
+$button-gap: .25rem;
+$button-x-padding: .75rem;
+$button-y-padding: .375rem;
+$logo-size: 2.125rem;
+$margin-bottom: 1.5rem;
+$outline-alpha: .5;
+$outline-width: .2rem;
+$sc-contacts: skype, telegram;
+
+#contact {
+  &s {
+    margin-top: 2rem;
+    max-width: 100%;
+
+    a {
+      margin: $button-gap;
+
+      i,
+      svg {
+        margin-right: .5rem;
+        vertical-align: -10%;
+      }
+    }
+  }
+
+  &- {
+    @mixin button-variant($background) {
+      $background-hover: darken($background, map-get($darkens, background-hover));
+      $background-active: darken($background, map-get($darkens, background-active));
+      $border: darken($background, map-get($darkens, border));
+      $border-hover: darken($border, map-get($darkens, border-hover));
+      $border-active: darken($border, map-get($darkens, border-active));
+
+      background-color: $background;
+
+      &:hover,
+      &:focus {
+        background-color: $background-hover;
+        border-color: $border-hover;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $outline-width change-color(darken($background, map-get($darkens, outline)), $alpha: $outline-alpha);
+      }
+
+      &:not(:disabled):not(.disabled):active,
+      .show > &.dropdown-toggle {
+        background-color: $background-active;
+        border-color: $border-active;
+      }
+    }
+
+    @each $contact, $color in $contacts-colors {
+      @if $contact != instagram {
+        &#{$contact} {
+          @include button-variant($color)
+        }
+      }
+    }
+
+    &instagram {
+      $colors: map-get($contacts-colors, instagram);
+      $background: nth($colors, 5);
+      $border: nth($colors, 3);
+      $border-hover: darken($border, map-get($darkens, border-hover));
+      $border-active: darken($border, map-get($darkens, border-active));
+
+      @function gradient($darken) {
+        $gradient: 45deg;
+        @for $i from 1 through length($colors) {
+          $color: darken(nth($colors, $i), $darken);
+          $position: 100% * ($i - 1) / (length($colors) - 1);
+          $gradient: append($gradient, $color $position, $separator: comma);
+        }
+        @return $gradient;
+      }
+
+      @mixin gradient($darken) {
+        background: -moz-linear-gradient(gradient($darken));
+        background: -webkit-linear-gradient(gradient($darken));
+        background: linear-gradient(gradient($darken));
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken(nth($colors, 1), $darken)}', endColorstr='#{darken(nth($colors, -1), $darken)}', GradientType=1);
+      }
+
+      @include gradient(0);
+      @include button-variant($background);
+      border: none;
+      padding: calc(#{$button-y-padding} + #{$button-border-width}) calc(#{$button-x-padding} + #{$button-border-width});
+
+      &:hover,
+      &:focus {
+        @include gradient(map-get($darkens, background-hover));
+        border: $button-border-width solid $border-hover;
+        padding: $button-y-padding $button-x-padding;
+      }
+
+      &:active {
+        @include gradient(map-get($darkens, background-active));
+        border: $button-border-width solid $border-active;
+        padding: $button-y-padding $button-x-padding;
+      }
+    }
+  }
+
+  #logo {
+    color: $foreground;
+    margin: .5rem auto $margin-bottom;
+    font-size: 1.33rem;
+    font-weight: 500;
+    i, svg {
+      background: radial-gradient(circle at 50% 53%, #fff .7rem, transparent .7rem);
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    i,
+    svg {
+      height: $logo-size;
+      width: $logo-size;
+      margin-right: .33rem;
+      vertical-align: -30%;
+
+      @each $contact in $sc-contacts {
+        &[class*="#{$contact}"] {
+          color: map-get($contacts-colors, $contact);
+        }
+      }
+    }
+  }
+
+  header {
+    font-size: 1.25rem;
+  }
+
+  header + a {
+    margin-bottom: $margin-bottom;
+  }
+
+  a {
+    margin: $button-gap auto;
+  }
+}
+
+#iframe {
+  position: absolute;
+  left: -10000px;
+  top: -10000px;
+}

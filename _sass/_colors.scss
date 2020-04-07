@@ -1,0 +1,37 @@
+$foreground: rgba(255, 255, 255, .97);
+$background: #1a1b1e;
+
+$logo-color: #3454b4;
+
+$code-background: darken($background, 2);
+$code-inline-background: change-color($foreground, $alpha: .1);
+
+$scrollbar: change-color($foreground, $alpha: .2);
+
+$gray: change-color($foreground, $alpha: .46);
+$red: #ff7e7e;
+$red-dark: #990b0b;
+$yellow: #abab00;
+$yellow-dark: #82826f;
+$green: #00c000;
+$cyan: #00b8b8;
+$blue: #9c9cff;
+$purple: #ff6ede;
+$error: #ffc8c8;
+$error-background: #800;
+
+$muted: #7c848b;
+
+$contacts-colors: (
+    instagram : (#f09433, #e6683c, #dc2743, #cc2366, #bc1888),
+    bandcamp : #629aa9,
+    email : #666,
+    facebook : #3b5998,
+    github : #333,
+    linkedin : #0077b5,
+    skype : #00aff0,
+    soundcloud: #f30,
+    telegram : #08c,
+    twitter : #1da1f2,
+    vk : #45668e
+);

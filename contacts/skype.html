@@ -1,13 +1,15 @@
 ---
 permalink: /contacts/skype
-layout: default
+title: Skype
+layout: main
+stylesheets: contacts
 ---
 {% assign skype = site.data.contacts['skype'] %}
 <div id="contact" class="text-center d-flex flex-column justify-content-center">
-	<a id="logo" href="//skype.com"><i class="fab fa-skype" style="color: #{{ skype.color }};"></i> Skype</a>
+	<a id="logo" class="no-icon" href="https://skype.com"><i class="fab fa-skype"></i>Skype</a>
 	<header>{{ site.title }}</header>
 	<a href="skype:{{ skype.username }}?userinfo">@{{ skype.username }}</a>
-	<a href="skype:{{ skype.username }}?userinfo" class="btn btn-success text-white mx-auto" role="button"><i class="fab fa-skype fa-fw"></i> Открыть профиль</a>
-	<a href="//go.skype.com/get.skype.page" class="btn btn-primary text-white mx-auto" role="button"><i class="fas fa-arrow-alt-circle-down fa-fw"></i> Установить Skype</a>
+	<a href="skype:{{ skype.username }}?userinfo" class="btn btn-success text-white mx-auto no-icon" role="button"><i class="fab fa-skype fa-fw"></i> Открыть профиль</a>
+	<a href="https://go.skype.com/get.skype.page" class="btn btn-primary text-white mx-auto no-icon" role="button"><i class="fas fa-arrow-alt-circle-down fa-fw"></i> Установить Skype</a>
 	<div id="iframe"><iframe src="skype:{{ skype.username }}?userinfo"></iframe></div>
 </div>

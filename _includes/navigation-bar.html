@@ -1,0 +1,15 @@
+<header class="navbar navbar-dark navbar-expand-sm">
+<!--	<a href="/" class="navbar-brand"><i class="fas fa-warehouse"></i>{{ site.title }}</a>-->
+	<a href="/" class="navbar-brand"><i class="fas fa-home fa-lg"></i></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"><span class="navbar-toggler-icon"></span></button>
+	<div id="navbar" class="collapse navbar-collapse justify-content-end"><ul class="navbar-nav">
+		{% for item in site.data.navigation-bar %}
+			<li class="nav-item"><a class="nav-link{% if page.url == item.link %} active{% endif %}" href="{{ item.link }}"><i class="fa{{ item.icon }} fa-fw"></i> {{ item.title }}</a></li>
+		{% endfor %}
+		<!--<div id="theme-switcher" class="btn-group-toggle" data-toggle="buttons">
+			<label class="btn btn-link active">
+				<input type="checkbox" checked><i class="fas fa-adjust"></i>
+			</label>
+		</div>-->
+	</ul></div>
+</header>

@@ -1,13 +1,15 @@
 ---
 permalink: /contacts/telegram
-layout: default
+title: Telegram
+layout: main
+stylesheets: contacts
 ---
 {% assign telegram = site.data.contacts['telegram'] %}
 <div id="contact" class="text-center d-flex flex-column justify-content-center">
-	<a id="logo" href="//telegram.org"><i class="fab fa-telegram" style="color: #{{ telegram.color }};"></i> Telegram</a>
+	<a id="logo" class="no-icon" href="https://telegram.org"><i class="fab fa-telegram"></i>Telegram</a>
 	<header>{{ site.title }}</header>
-	<a href="//t.me/{{ telegram.username }}">@{{ telegram.username }}</a>
-	<a href="tg://resolve?domain={{ telegram.username }}" class="btn btn-success text-white mx-auto" role="button"><i class="fab fa-telegram-plane fa-fw"></i> Отправить сообщение</a>
-	<a href="//telegram.org/dl"" class="btn btn-primary text-white mx-auto" role="button"><i class="fas fa-arrow-alt-circle-down fa-fw"></i> Установить Telegram</a>
+	<a href="https://t.me/{{ telegram.username }}">@{{ telegram.username }}</a>
+	<a href="tg://resolve?domain={{ telegram.username }}" class="btn btn-success text-white mx-auto no-icon" role="button"><i class="fab fa-telegram-plane fa-fw"></i> Отправить сообщение</a>
+	<a href="https://telegram.org/dl" class="btn btn-primary text-white mx-auto no-icon" role="button"><i class="fas fa-arrow-alt-circle-down fa-fw"></i> Установить Telegram</a>
 	<div id="iframe"><iframe src="tg://resolve?domain={{ telegram.username }}"></iframe></div>
 </div>

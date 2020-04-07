@@ -1,9 +1,0 @@
-<header><nav class="navbar navbar-light navbar-expand-sm mx-auto">
-	<a href="/" class="navbar-brand"><i class="fas fa-feather-alt fa-lg"></i> {{ site.title }}</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"><span class="navbar-toggler-icon"></span></button>
-	<div id="navbar" class="collapse navbar-collapse justify-content-end"><ul class="navbar-nav">
-		{% for item in site.data.navigation %}
-			<li class="nav-item"><a class="nav-link{% if page.url == item.link %} active{% endif %}" href="{{ item.link }}">{{ item.title }}</a></li>
-		{% endfor %}
-	</ul></div>
-</nav></header>

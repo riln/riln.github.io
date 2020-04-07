@@ -1,11 +1,13 @@
 ---
 permalink: /contacts
-layout: default
+layout: main
+stylesheets: contacts
 ---
 
 <h1>Контакты</h1>
 <div id="contacts" class="d-flex flex-row flex-wrap justify-content-center">
 	{% for item in site.data.contacts %}
-		<a id="contact-{{ item[0] }}" href="{{ item[1].link }}" class="btn text-white" role="button"><i class="fa{{ item[1].icon }} fa-fw"></i>{{ item[1].title }}</a>
+		<a id="contact-{{ item[0] }}" href="{{ item[1].link }}" class="btn text-white no-icon" role="button"><i class="fa{{ item[1].icon }}"></i>{{ item[1].title }}</a>
 	{% endfor %}
+	<a id="contact-email" href="mailto:{{ site.title }} <{{ site.email }}>" class="btn text-white no-icon" role="button"><i class="fas fa-at"></i>Email</a>
 </div>

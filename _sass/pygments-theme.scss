@@ -1,0 +1,233 @@
+@import 'tools';
+@import 'colors';
+@import 'jetbrains-mono';
+
+$border-radius: .2rem;
+$inline-padding: .16rem .4rem;
+$font-size: .8125rem;
+$space: .8125rem;
+$letter-width: .625rem;
+$wrap-column: 80;
+
+code,
+pre {
+  font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-feature-settings: 'calt';
+  line-height: 1.25rem;
+}
+
+code,
+kbd {
+  color: inherit;
+  background: $code-inline-background;
+  padding: $inline-padding;
+  border-radius: $border-radius;
+}
+
+kbd {
+  font-family: inherit;
+  font-size: .9rem;
+  margin: 0 .0625rem;
+}
+
+p > code, kbd { white-space: nowrap }
+
+.highlight {
+  margin: 0 0 1rem;
+  @include prefix((tab-size: 4), moz);
+
+  code {
+    background: none;
+    padding: 0;
+  }
+
+  .rouge-table {
+    width: 100%;
+  }
+
+  > pre {
+    border-radius: $border-radius;
+    padding: calc(#{$space} / 1.5) calc(#{$space} - .15rem);
+    background: $code-background;
+  }
+
+  pre {
+    font-size: $font-size;
+    margin: 0;
+  }
+
+  .gutter {
+    width: .525rem;
+  }
+
+  .shell-prompt {
+    @include prefix((user-select: none !important), khtml moz ms webkit);
+    -webkit-touch-callout: none !important;
+    color: $gray !important;
+  }
+
+  .lineno {
+    color: $gray;
+    margin-right: calc(#{$space} - .3rem);
+    text-align: right;
+    @include prefix((user-select: none !important), khtml moz ms webkit);
+    -webkit-touch-callout: none !important;
+    overflow: hidden;
+
+    a {
+      color: inherit;
+      padding: .125rem .3rem;
+      border-radius: .2rem;
+      text-align: center;
+      width: max-content;
+
+      &:hover {
+        background: $code-inline-background;
+        text-decoration: none;
+        color: change-color($gray, $alpha: .46);
+      }
+    }
+  }
+
+  td.code > pre {
+    box-shadow: inset calc(#{$letter-width} * #{$wrap-column} + 1px) 0 0 $code-background,
+      inset calc(#{$letter-width} * #{$wrap-column}) 0 0 change-color($gray, $alpha: .1);
+    min-width: -webkit-max-content;
+
+    // Render boundary whitespaces
+    .bw {
+      display: inline-block;
+      background: radial-gradient(circle at 50% 53%, $gray 1px, transparent 1.5px);
+
+      &t::before {
+        display: inline-block;
+        content: '›';
+        color: $gray;
+        width: 0;
+      }
+    }
+  }
+
+  /* Colors section */
+
+  pre, .hll { color: $foreground }
+
+  .err { color: $error; background: $error-background }
+
+  .p, // Punctuation
+  .w, // Text.Whitespace
+  .bp { // Name.Builtin.Pseudo
+    color: $foreground
+  }
+
+  .c { // Comment
+    &1, // .Single
+    &m, // .Multiline
+    &p, // .Preproc
+    &s, // .Special
+    & {
+      color: $yellow-dark;
+      font-style: italic;
+    }
+  }
+
+  .il { color: $purple } // Literal.Number.Integer.Long
+
+  .k { // Keyword
+    &c, // .Constant
+    &d, // .Declaration
+    &p, // .Pseudo
+    &r, // .Reserved
+    &t, // .Type
+    & { color: $cyan }
+
+    &n { color: $red } // Namespace
+  }
+
+  .l { // Literal
+    color: $purple;
+
+    &d { // .Date
+      color: $yellow }
+  }
+
+  .m { // Literal.Number
+    &f, // .Float
+    &h, // .Hex
+    &i, // .Integer
+    &o, // .Oct
+    & { color: $purple }
+  }
+
+  .n { // Name
+    &i, // .Entity
+    &l, // .Label
+    &n, // .Namespace
+    &v, // .Variable
+    & { color: $foreground }
+
+    &b { color: $purple } // .Builtin
+
+    &a, // .Attribute
+    &c, // .Class
+    &d, // .Decorator
+    &e, // .Exception
+    &f, // .Function
+    &x { // .Other
+      color: $blue }
+
+    &o { color: $cyan } // .Constant
+
+    &t { color: $yellow } // .Tag
+  }
+
+  .o { // Operator
+    &w, // .Word
+    & { color: $red }
+  }
+
+  .py { color: $foreground } // Name.Property
+
+  .s { // Literal.String
+    &1, // .Single
+    &2, // .Double
+    &b, // .Backtick
+    &c, // .Char
+    &d, // .Doc
+    &e, // .Escape
+    &h, // .Heredoc
+    &i, // .Interpol
+    &r, // .Regex
+    &s, // .Symbol
+    &x, // .Other
+    & { color: $green }
+  }
+
+  .v { // Name.Variable
+    &c, // .Class
+    &g, // .Global
+    &i { // .Instance
+      color: $foreground }
+  }
+
+  .g { // Generic
+    // &h {} // Heading & Diff Header
+    &u { color: $yellow-dark; } // Subheading & Diff Unified/Comment?
+    &d { color: $red; } // Deleted & Diff Deleted
+    &i { color: $green; } // Inserted & Diff Inserted
+    &e { font-style: italic } // Emph
+    &s { font-weight: bold } // Strong
+  }
+}
+
+
+// Scrollbars
+
+$scrollbar-size: .875rem;
+
+pre::-webkit-scrollbar-thumb { border: 3px solid $code-background }
+
+pre.overflowed {
+  border-bottom-left-radius: calc(#{$scrollbar-size} / 2);
+  border-bottom-right-radius: calc(#{$scrollbar-size} / 2);
+}

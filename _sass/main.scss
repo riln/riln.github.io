@@ -1,191 +1,295 @@
-$border-radius: 3px;
+@import 'tools';
+@import 'colors';
+
+// #test {
+//  width: 100px;
+//  height: 100px;
+//  background: black;
+
+//  @include browsers(chrome, ie) { background: green }
+//  @include browsers(firefox) { background: red }
+//  @include browsers(ie) { background: blue }
+// }
+
+$section-hr: 1px solid $gray;
+$navbar-height: 4rem;
+$main-padding: 2rem 1rem;
+$heading-margin: 1.5rem;
+$post-time-margin: .5rem;
+
+$scrollbar-size: .875rem;
 
 $breakpoint: 60rem;
 $fluid: 55rem;
 
 @media (min-width: $breakpoint) {
-	nav,
-	main,
-	footer {
-		width: $fluid;
-	}
+  body {
+    max-width: $fluid;
+  }
+}
+
+html, pre {
+  scrollbar-color: $scrollbar transparent;
+}
+
+::-webkit-scrollbar {
+  width: $scrollbar-size;
+  height: $scrollbar-size;
+  background-color: transparent;
+  border-radius: calc(#{$scrollbar-size} / 2);
+
+  &-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  &-thumb {
+    border-radius: calc(#{$scrollbar-size} / 2);
+    background-color: $scrollbar;
+    border: 3px solid $background;
+  }
+
+  &-track {
+    background-color: transparent;
+  }
+
+  &-corner {
+    background-color: transparent;
+    border-color: transparent;
+  }
 }
 
 html,
 body {
-	height: 100%;
-}
-
-.navbar {
-	padding: .75rem 1rem;
-	border-bottom: 1px solid #e1e4e8;
-
-	&-brand {
-		i,
-		svg {
-			margin-right: .4rem;
-			color: #3454b4;
-		}
-	}
-
-	&-toggler {
-		width: 2.5rem;
-		padding: 0;
-		border: none;
-	}
+  height: 100%;
+  color: $foreground;
+  background: $background;
 }
 
 body {
-	main {
-		min-height: calc(100% - 4rem * 2);
-		margin: 0 auto !important;
-		padding: 3rem 1rem;
-	}
-
-	footer {
-		height: 4rem;
-		border-top: 1px solid #e1e4e8;
-	}
+  margin: 0 auto;
 }
 
-#contact {
-	&s {
-		margin-top: 2rem;
-		max-width: 100%;
+.navbar {
+  padding: .75rem 1rem;
+  height: $navbar-height;
 
-		a {
-			margin: .25rem;
+  //&-brand {
+  //  position: relative;
+  //  top: .0625rem;
+  //  i,
+  //  svg {
+  //    margin-right: .75rem;
+  //    position: relative;
+  //    top: -.125rem;
+  //  }
+  //}
 
-			i,
-			svg {
-				margin-right: .5rem;
-				vertical-align: -10%;
-			}
-		}
-	}
+  &-toggler {
+    width: 2.5rem;
+    padding: 0;
+    border: none;
+  }
 
-	// Media links
-	&- {
-		$background-hover-darken: 7.5%;
-		$background-active-darken: 10%;
-		$border-darken: 2.5%;
-		$border-hover-darken: 10%;
-		$border-active-darken: 12.5%;
-		$outline-darken: 18.5%;
-		$outline-alpha: .5;
-
-		@mixin button-variant($background) {
-			$background-hover: darken($background, $background-hover-darken);
-			$background-active: darken($background, $background-active-darken);
-			$border: darken($background, $border-darken);
-			$border-hover: darken($border, $border-hover-darken);
-			$border-active: darken($border, $border-active-darken);
-
-			background-color: $background;
-
-			&:hover,
-			&:focus {
-				background-color: $background-hover;
-				border-color: $border-hover;
-			}
-
-			&:focus {
-				box-shadow: 0 0 0 .2rem change-color(darken($background, $outline-darken), $alpha: $outline-alpha);
-			}
-
-			&:not(:disabled):not(.disabled):active,
-			.show > &.dropdown-toggle {
-				background-color: $background-active;
-				border-color: $border-active;
-			}
-		}
-
-		&instagram {
-			$background: #bc1888;
-			$border: #dc2743;
-			$border-hover: darken($border, $border-hover-darken);
-			$border-active: darken($border, $border-active-darken);
-
-			@mixin gradient($darken) {
-				background-color: darken($background, $darken);
-				background:    -moz-linear-gradient(45deg, darken(#f09433, $darken) 0%, darken(#e6683c, $darken) 25%, darken(#dc2743, $darken) 50%, darken(#cc2366, $darken) 75%, darken(#bc1888, $darken) 100%);
-				background: -webkit-linear-gradient(45deg, darken(#f09433, $darken) 0%, darken(#e6683c, $darken) 25%, darken(#dc2743, $darken) 50%, darken(#cc2366, $darken) 75%, darken(#bc1888, $darken) 100%);
-				background:         linear-gradient(45deg, darken(#f09433, $darken) 0%, darken(#e6683c, $darken) 25%, darken(#dc2743, $darken) 50%, darken(#cc2366, $darken) 75%, darken(#bc1888, $darken) 100%);
-				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{darken(#f09433, $darken)}', endColorstr='#{darken(#bc1888, $darken)}', GradientType=1);
-			}
-
-			@include gradient(0);
-			@include button-variant($background);
-			border: none;
-			padding: calc(.375rem + 1px) calc(.75rem + 1px);
-			
-			&:hover,
-			&:focus {
-				@include gradient($background-hover-darken);
-				border: 1px solid $border-hover;
-				padding: .375rem .75rem;
-			}
-			
-			&:active {
-				@include gradient($background-active-darken);
-				border: 1px solid $border-active;
-				padding: .375rem .75rem;
-			}
-		}
-		&bandcamp   { @include button-variant(#629aa9) }
-		&email      { @include button-variant(#666) }
-		&facebook   { @include button-variant(#3b5998) }
-		&github     { @include button-variant(#333) }
-		&linkedin   { @include button-variant(#0077b5) }
-		&skype      { @include button-variant(#00aff0) }
-		&soundcloud { @include button-variant(#f30) }
-		&telegram   { @include button-variant(#08c) }
-		&twitter    { @include button-variant(#1da1f2) }
-		&vk         { @include button-variant(#45668e) }
-	}
-
-	#logo {
-		color: #000;
-		margin: .5rem 0 1.5rem;
-		font-size: 1.33rem;
-		font-weight: 500;
-
-		&:hover {
-			text-decoration: none;
-		}
-
-		i,
-		svg {
-			height: 34px;
-			width: 34px;
-			margin-right: 7px;
-			vertical-align: -30%;
-		}
-	}
-
-	header {
-		font-size: 1.25rem;
-	}
-
-	header + a {
-		margin-bottom: 1.5rem;
-	}
-
-	a {
-		margin: .25rem;
-	}
-
-	#iframe {
-		position: absolute;
-		left: -10000px;
-		top: -10000px;
-	}
+  .nav-link {
+    padding: .5rem .75rem !important;
+  }
 }
 
-pre {
-	&.highlight {
-		border-radius: $border-radius;
-		padding: .5rem .75rem;
-		max-height: 20rem;
-	}
+body {
+  > header {
+    border-bottom: $section-hr;
+  }
+
+  > main {
+    min-height: calc(100% - #{$navbar-height} * 2);
+    padding: $main-padding;
+
+    & > *:first-child {
+      margin-top: 0;
+    }
+  }
+
+  > footer {
+    height: $navbar-height;
+    border-top: $section-hr;
+  }
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: $heading-margin 0;
+}
+
+img {
+  max-width: 100%;
+
+  &.text-muted {
+    border-radius: 0;
+    font-size: .9rem;
+    white-space: pre;
+
+    @-moz-document url-prefix() {
+      white-space: inherit;
+    }
+  }
+}
+
+figcaption {
+  margin-top: .5rem;
+}
+
+.anchor {
+  visibility: hidden;
+  padding-left: .25em;
+
+  i,
+  svg {
+    font-size: .67em;
+  }
+
+  h1:hover &,
+  h2:hover &,
+  h3:hover &,
+  h4:hover &,
+  h5:hover &,
+  h6:hover & {
+    visibility: visible;
+  }
+}
+
+.post-time {
+  margin: calc(#{$post-time-margin} - #{$heading-margin}) 0 $post-time-margin;
+}
+
+.tag {
+  $darkens: (
+      background-hover: 7.5%,
+      background-active: 10%,
+      border: 2.5%,
+      border-hover: 10%,
+      border-active: 12.5%,
+      outline: 18.5%
+  );
+  $outline-width: .2rem;
+  $outline-alpha: .5;
+
+  @mixin button-variant($background) {
+    $background-hover: darken($background, map-get($darkens, background-hover));
+    $background-active: darken($background, map-get($darkens, background-active));
+    $border: darken($background, map-get($darkens, border));
+    $border-hover: darken($border, map-get($darkens, border-hover));
+    $border-active: darken($border, map-get($darkens, border-active));
+
+    background-color: $background;
+
+    &:hover,
+    &:focus {
+      background-color: $background-hover;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $outline-width change-color(darken($background, map-get($darkens, outline)), $alpha: $outline-alpha);
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    .show > &.dropdown-toggle {
+      background-color: $background-active;
+    }
+  }
+
+  padding: .3rem .4rem;
+  outline: none;
+  @include button-variant($logo-color);
+}
+
+li header {
+  font-size: 2rem;
+}
+
+a {
+  &:link { color: $blue }
+  &:visited { color: $purple }
+  &:active { color: $red }
+  &:focus { outline: none }
+
+  .fa-external-link-alt {
+    font-size: .8em;
+    position: relative;
+    top: -.0625rem;
+  }
+  &.no-icon .fa-external-link-alt {
+    display: none;
+  }
+}
+
+figure.highlight > pre,
+pre.highlight {
+  position: relative;
+
+  & .copy-button {
+    position: absolute;
+    color: #f8f8f8;
+    top: 0;
+    right: 0;
+    padding: 0 .3rem;
+    margin: .4rem .45rem .375rem;
+    opacity: .5;
+    transition: .1s opacity;
+
+    &:hover {
+      opacity: 1 !important;
+    }
+  }
+}
+
+main ul {
+  padding-left: 0;
+  list-style-type: none;
+  & li::before {
+    content: '–';
+    padding-right: .3em;
+  }
+}
+
+main ol {
+  padding-left: 1.125em;
+}
+
+.figure-caption {
+  color: #7c848b;
+}
+
+//.text-muted,
+.nav-link.disabled {
+  color: $muted !important;
+}
+
+#theme-switcher .btn-link {
+  position: relative;
+  top: .15rem;
+  color: $background;
+  &.active {
+    color: change-color($foreground, $alpha: .5);
+    &:hover { color: change-color($foreground, $alpha: .75) }
+  }
+}
+
+main > table {
+  background: none !important;
+  tr:nth-of-type(odd) {
+    // background-color: rgba(255,255,255,.05);
+  }
+}
+
+hr {
+  //border-top: 1px solid rgba(0, 0, 0, .1);
+  border-top: 1px solid $gray;
+}
+
+// https://www.youtube.com/watch?v=eN6ZPuSnjV4

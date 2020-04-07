@@ -1,0 +1,12 @@
+#- title: Блог
+#  link: /blog
+#  icon: s fa-pen
+#- title: Код
+#  link: /code
+#  icon: s fa-code
+#- title: Музыка
+#  link: /music
+#  icon: s fa-music
+- title: Контакты
+  link: /contacts
+  icon: s fa-address-card

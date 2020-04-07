@@ -1,0 +1,85 @@
+@import 'jetbrains-mono';
+@import 'colors';
+
+html {
+  background: #000;
+  max-height: 100%;
+}
+
+body {
+  background: transparent;
+}
+
+#main {
+//
+}
+
+#error,
+h2 {
+  //font-family: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  text-align: center;
+}
+
+#error {
+  margin: auto;
+  font-size: 20rem;
+  font-weight: 600;
+  line-height: 1;
+  position: absolute;
+  left: 50%;
+  top: 38.197%;
+  transform: translate(-50%, -50%);
+
+  span {
+    position: relative;
+    z-index: -2;
+    &:first-child {
+      left: -6.6rem;
+    }
+    &:last-child {
+      left: 6.6rem;
+    }
+  }
+}
+
+h2 {
+  height: 0;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: calc(38.197% + 13rem);
+  transform: translateX(-50%);
+  button {
+    background: #ffffff28;
+    border-radius: .2rem;
+    padding: .4rem .6rem;
+    color: $foreground;
+    transition: none;
+    border: none;
+    &:hover {
+      background: #ffffff22;
+    }
+    &:active {
+      background: #ffffff16;
+    }
+  }
+}
+
+.anchor {
+  display: none;
+}
+
+#earth {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 0;
+  //width: 100%;
+  z-index: -1 !important;
+  margin: 0 !important;
+}
+
+#theme-switcher {
+  display: none;
+}

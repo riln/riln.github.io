@@ -1,0 +1,13 @@
+---
+layout: main
+excerpt_separator: <!-- more -->
+scripts:
+  - src: http://localhost:35729/livereload.js
+  - src: https://momentjs.com/downloads/moment-with-locales.min.js
+---
+<h1>{{ page.title }}</h1>
+<div class="post-time small text-muted" data-post-date="{{ post.date }}"></div>
+{% for tag in post.tags %}
+	<a href="" class="tag badge">{{ tag }}</a>
+{% endfor %}
+{{ content }}

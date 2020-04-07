@@ -1,69 +1,51 @@
 bandcamp:
   title: Bandcamp
-  link: //neustoy.bandcamp.com
+  link: https://neustoy.bandcamp.com
   icon: b fa-bandcamp
-  color: 629aa9
 
 facebook:
   title: Facebook
-  link: //fb.me/neustoy
+  link: https://fb.me/neustoy
   icon: b fa-facebook-f
-  color: 3b5998
 
 github:
   title: GitHub
-  link: //github.com/neustoy
+  link: https://github.com/neustoy
   icon: b fa-github
-  color: 333
 
 instagram:
   title: Instagram
-  link: //instagram.com/neustoy
+  link: https://instagram.com/neustoy
   icon: b fa-instagram
-  color: "bc1888; background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 ); border: none; padding: calc(.375rem + 1px) calc(.75rem + 1px);"
 
 linkedin:
   title: LinkedIn
-  link: //linkedin.com/in/romanilin
+  link: https://linkedin.com/in/romanilin
   icon: b fa-linkedin-in
-  color: 0077b5
 
 skype:
   title: Skype
   link: /contacts/skype
   icon: b fa-skype
-  color: 00aff0
   username: neustoy
 
 soundcloud:
   title: SoundCloud
-  link: //
+  link: https://soundcloud.com/neustoy
   icon: b fa-soundcloud
-  color: f30
 
 telegram:
   title: Telegram
-  # link: tg://resolve?domain=neustoy
   link: /contacts/telegram
   icon: b fa-telegram-plane
-  color: 08c
   username: romanilin
 
 twitter:
   title: Twitter
-  link: //twitter.com/neustoi
+  link: https://twitter.com/neustoi
   icon: b fa-twitter
-  color: 1da1f2
 
 vk:
   title: VK
-  link: //vk.com/neustoy
+  link: https://vk.com/neustoy
   icon: b fa-vk
-  color: 45668e
-
-email:
-  title: Email
-  link: mailto:Роман Ильин <romanilin@pm.me>
-  icon: s fa-at
-  color: 666
-  # color: 007bff
